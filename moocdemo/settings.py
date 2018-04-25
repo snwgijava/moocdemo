@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# print(BASE_DIR)
+# print(os.path.join(BASE_DIR,'apps'))
+#将当前项目绝对路径与apps进行拼接，返回新的路径，0表示先搜索apps下的东西
+sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'courses',
+    'operation',
+    'organization',
 ]
 
 MIDDLEWARE = [
@@ -111,9 +121,9 @@ AUTH_USER_MODEL = 'users.UserProfile'
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

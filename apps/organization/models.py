@@ -27,7 +27,7 @@ class CourseOrg(models.Model):
     address = models.CharField(max_length=150, verbose_name=u"机构地址")
     # 一个城市可以有很多课程机构，通过将city设置外键，变成课程机构的一个字段
     # 可以让通过机构找到城市
-    city = models.ForeignKey(CityDict, verbose_name=u"所在城市")
+    city = models.ForeignKey(CityDict,on_delete=models.CASCADE, verbose_name=u"所在城市")
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"添加时间")
 
     class Meta:
