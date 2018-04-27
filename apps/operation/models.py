@@ -16,10 +16,12 @@ class UserAsk(models.Model):
         verbose_name = u"用户咨询"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 # 用户对于课程评论
 class CourseComments(models.Model):
-
     # 会涉及两个外键: 1. 用户， 2. 课程。
     course = models.ForeignKey(Course,on_delete=models.CASCADE, verbose_name=u"课程")
     user = models.ForeignKey(UserProfile,on_delete=models.CASCADE, verbose_name=u"用户")
@@ -29,6 +31,9 @@ class CourseComments(models.Model):
     class Meta:
         verbose_name = u"课程评论"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.comments
 
 
 # 用户对于课程,机构，讲师的收藏
@@ -53,6 +58,9 @@ class UserFavorite(models.Model):
         verbose_name = u"用户收藏"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.fav_type
+
 
 # 用户消息表
 class UserMessage(models.Model):
@@ -69,6 +77,10 @@ class UserMessage(models.Model):
         verbose_name = u"用户消息"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return '{0}的消息'.format(self.user)
+
+
 
 # 用户课程表
 class UserCourse(models.Model):
@@ -80,3 +92,4 @@ class UserCourse(models.Model):
     class Meta:
         verbose_name = u"用户课程"
         verbose_name_plural = verbose_name
+

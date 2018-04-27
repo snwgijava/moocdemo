@@ -8,7 +8,7 @@ class Course(models.Model):
     name = models.CharField(max_length=50,verbose_name='课程名')
     desc = models.CharField(max_length=300,verbose_name='课程描述')
     detail = models.TextField(verbose_name='课程详情')
-    degree = models.CharField(choices=DEGREE_CHOICES,max_length=2)
+    degree = models.CharField(choices=DEGREE_CHOICES,max_length=2,verbose_name='学习难度')
     learn_times = models.IntegerField(default=0,verbose_name='学习时长(分钟数)')
     #保存学习人数，点击开始学习才算
     students = models.IntegerField(default=0,verbose_name='学习人数')
@@ -22,6 +22,9 @@ class Course(models.Model):
         verbose_name = '课程信息表'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 #章节
 class Lesson(models.Model):
     #一个课程对应多个章节
@@ -32,6 +35,9 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = '章节'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return '<<{0}>>课程的章节>>{1}'.format(self.course,self.name)
 
 # 每章视频
 class Video(models.Model):
@@ -44,6 +50,9 @@ class Video(models.Model):
     class Meta:
         verbose_name = u"视频"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return '<<{0}>>章节的视频>>{1}'.format(self.lesson,self.name)
 
 
 # 课程资源
