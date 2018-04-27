@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print(os.path.join(BASE_DIR,'apps'))
 #将当前项目绝对路径与apps进行拼接，返回新的路径，0表示先搜索apps下的东西
 sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
-
+sys.path.insert(0,os.path.join(BASE_DIR, 'extra_apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'courses',
     'operation',
     'organization',
+    'xadmin',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -129,7 +132,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
