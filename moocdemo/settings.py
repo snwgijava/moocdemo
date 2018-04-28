@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'captcha',
-
+    'pure_pagination',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',#图片处理器{{ MEDIA_URL }}
             ],
         },
     },
@@ -143,13 +144,24 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+#静态文件夹
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
 
-# 发送邮件的setting设置
+#上传路径
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
+#分页插件设置
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 10, #显示多少个page
+    'MARGIN_PAGES_DISPLAYED': 2,    #旁边显示多少个
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,   #输入不合法的页数就跳到第一页
+}
+
+# 发送邮件的setting设置
 EMAIL_HOST = "smtp.qq.com"
 EMAIL_PORT = 25
 EMAIL_HOST_USER = "809127232@qq.com"
