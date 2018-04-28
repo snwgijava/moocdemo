@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'organization',
     'xadmin',
     'crispy_forms',
+    'captcha',
 
 ]
 
@@ -64,6 +65,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'moocdemo.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'users.views.CustomBackend',
+]
 
 TEMPLATES = [
     {
@@ -139,3 +144,16 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'static'),
+)
+
+# 发送邮件的setting设置
+
+EMAIL_HOST = "smtp.qq.com"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "809127232@qq.com"
+EMAIL_HOST_PASSWORD = "xfyentkhfbcvbcgd"
+EMAIL_USE_TLS = True
+EMAIL_FROM = "809127232@qq.com"
+
